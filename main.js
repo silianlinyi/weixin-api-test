@@ -35,20 +35,45 @@ weixin.on('allMsg', function(data) {
 weixin.on('textMsg', function(data) {
     console.log(data);
     switch (data.content) {
-        case 'text':
+        case '文本':
             weixin.sendTextMsg({
                 toUserName: data.fromUserName,
                 fromUserName: data.toUserName,
-                content: data.content
+                content: new Date() + data.content
             });
             break;
-        case 'music':
-            weixin.sendMsg({
+        case '音乐':
+            weixin.sendMusicMsg({
                 toUserName: data.fromUserName,
                 fromUserName: data.toUserName,
-                msgType: data.msgType,
-                
-            })
+                title: '这是音乐的标题',
+                description: '这是音乐的描述',
+                musicUrl: 'http://sc.111ttt.com/up/mp3/347508/FCAF062BECD1C24FAED2A355EF51EBDD.mp3',
+                HQMusicUrl: 'http://sc.111ttt.com/up/mp3/347508/FCAF062BECD1C24FAED2A355EF51EBDD.mp3',
+                thumbMediaId: 'oqd3Be5QjUQDdhmwpvT6KJaLAvXEQZDKsjd_L7E-Ix8xv-83MSVBTdXZddTh1U4q'
+            });
+            break;
+        case '图文':
+            weixin.sendNewsMsg({
+                toUserName: data.fromUserName,
+                fromUserName: data.toUserName,
+                articles: [{
+                    title: '这是第一条图文消息',
+                    description: '这是第一个图文消息描述',
+                    picUrl: 'https://www.baidu.com/img/bd_logo1.png',
+                    url: 'http://www.baidu.com'
+                }, {
+                    title: '这是第一条图文消息',
+                    description: '这是第一个图文消息描述',
+                    picUrl: 'https://www.baidu.com/img/bd_logo1.png',
+                    url: 'http://www.baidu.com'
+                }, {
+                    title: '这是第一条图文消息',
+                    description: '这是第一个图文消息描述',
+                    picUrl: 'https://www.baidu.com/img/bd_logo1.png',
+                    url: 'http://www.baidu.com'
+                }]
+            });
             break;
         default:
             weixin.sendTextMsg({

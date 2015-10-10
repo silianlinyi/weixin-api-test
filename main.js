@@ -268,15 +268,26 @@ var menuObj = {
 // });
 
 // 获取素材总数
-weixin.getMaterialCount(function(data) {
+// weixin.getMaterialCount(function(data) {
+//     console.log(data);
+// });
+
+weixin.batchGetMaterial({
+    "type": "news",
+    "offset": 0,
+    "count": 10
+}, function(data) {
     console.log(data);
 });
 
 
 
-
-
-
+weixin.getShortUrl({
+    action: "long2short",
+    long_url: "http://www.baidu.com"
+}, function(data) {
+    console.log(data);
+});
 
 
 

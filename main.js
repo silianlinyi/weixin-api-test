@@ -42,6 +42,22 @@ weixin.on('textMsg', function(data) {
                 content: new Date() + data.content
             });
             break;
+        case '图片':
+            weixin.sendImageMsg({
+                toUserName: data.fromUserName,
+                fromUserName: data.toUserName,
+                mediaId: 'SpziRkA-oI4FdoP1dopPEVFUfzw3k7hywVGrLFqJ6DkHLtgnvMlqodCYiqY1otMc'
+            });
+            break;
+        case '视频':
+            weixin.sendVideoMsg({
+                toUserName: data.fromUserName,
+                fromUserName: data.toUserName,
+                mediaId: 'mWw5OqtxNP8YRjrEpiBNtKFp45w1fs5K4XOO9mtfaFtRe_D0omz623E7Dxu1v-3M',
+                title: '这是视频消息的标题',
+                description: '这是视频消息的描述'
+            });
+            break;
         case '音乐':
             weixin.sendMusicMsg({
                 toUserName: data.fromUserName,
@@ -88,10 +104,9 @@ weixin.on('textMsg', function(data) {
 // 图片消息
 weixin.on('imageMsg', function(data) {
     console.log(data);
-    weixin.sendMsg({
+    weixin.sendImageMsg({
         toUserName: data.fromUserName,
         fromUserName: data.toUserName,
-        msgType: 'image',
         mediaId: data.mediaId
     });
 });
@@ -99,10 +114,9 @@ weixin.on('imageMsg', function(data) {
 // 语音消息
 weixin.on('voiceMsg', function(data) {
     console.log(data);
-    weixin.sendMsg({
+    weixin.sendVoiceMsg({
         toUserName: data.fromUserName,
         fromUserName: data.toUserName,
-        msgType: 'voice',
         mediaId: data.mediaId
     });
 });
@@ -114,7 +128,7 @@ weixin.on('videoMsg', function(data) {
         toUserName: data.fromUserName,
         fromUserName: data.toUserName,
         msgType: 'video',
-        mediaId: 'LmDxeclZTcY-gO81eN_Bneu6V27twoBqnagAId-3mTFu7iU6eCiNMnwr5BdNOVJZ',
+        mediaId: 'mWw5OqtxNP8YRjrEpiBNtKFp45w1fs5K4XOO9mtfaFtRe_D0omz623E7Dxu1v-3M',
         title: '这是视频消息的标题',
         description: '这是视频消息的描述'
     });
@@ -134,6 +148,8 @@ weixin.on('locationMsg', function(data) {
 weixin.on('linkMsg', function(data) {
     console.log(data);
 });
+
+
 
 // 接收所有事件推送
 weixin.on('allEventMsg', function(data) {
@@ -165,6 +181,21 @@ weixin.on('CLICKEventMsg', function(data) {
 weixin.on('VIEWEventMsg', function(data) {
     console.log(data);
 });
+
+// 添加客服帐号
+// weixin.addKFAccount({
+//     "kf_account": "test1@gmail.com",
+//     "nickname": "客服1",
+//     "password": "123456"
+// }, function(data) {
+//     console.log(data);
+// });
+
+// 获取所有客服账号
+// weixin.getKFList(function(data) {
+//     console.log(data);
+// });
+
 
 // weixin.sendCustomMsg({
 //     'touser': 'ojim5txO8ivc0Ff2LKW1nlUJ9hM4',
@@ -232,7 +263,14 @@ var menuObj = {
 //     console.log(data);
 // });
 
+// weixin.getCurrentAutoReplyInfo(function(data) {
+//     console.log(data);
+// });
 
+// 获取素材总数
+weixin.getMaterialCount(function(data) {
+    console.log(data);
+});
 
 
 

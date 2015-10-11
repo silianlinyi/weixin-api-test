@@ -182,6 +182,10 @@ weixin.on('VIEWEventMsg', function(data) {
     console.log(data);
 });
 
+// weixin.on('scancode_pushEventMsg', function(data) {
+//     console.log(data);
+// });
+
 // 添加客服帐号
 // weixin.addKFAccount({
 //     "kf_account": "test1@gmail.com",
@@ -207,12 +211,12 @@ weixin.on('VIEWEventMsg', function(data) {
 
 // 自定义菜单查询接口
 // weixin.getMenu(function(data) {
-// console.log(data);
+//     console.log(JSON.stringify(data));
 // });
 
 // 自定义菜单删除接口
 // weixin.deleteMenu(function(data) {
-// console.log(data);
+//     console.log(data);
 // });
 
 // 自定义菜单创建接口
@@ -254,13 +258,37 @@ var menuObj = {
         "key": "rselfmenu_2_0"
     }]
 };
+
+// menuObj = {
+//     "button": [{
+//         "type": "click",
+//         "name": "今日歌曲",
+//         "key": "V1001_TODAY_MUSIC"
+//     }, {
+//         "name": "菜单",
+//         "sub_button": [{
+//             "type": "view",
+//             "name": "搜索",
+//             "url": "http://www.soso.com/"
+//         }, {
+//             "type": "view",
+//             "name": "视频",
+//             "url": "http://v.qq.com/"
+//         }, {
+//             "type": "click",
+//             "name": "赞一下我们",
+//             "key": "V1001_GOOD"
+//         }]
+//     }]
+// };
+
 // weixin.createMenu(menuObj, function(data) {
 //     console.log(data);
 // });
 
 // 获取自定义菜单配置接口
 // weixin.getCurrentSelfMenuInfo(function(data) {
-//     console.log(data);
+//     console.log(JSON.stringify(data));
 // });
 
 // weixin.getCurrentAutoReplyInfo(function(data) {
@@ -272,22 +300,55 @@ var menuObj = {
 //     console.log(data);
 // });
 
-weixin.batchGetMaterial({
-    "type": "news",
-    "offset": 0,
-    "count": 10
+// weixin.batchGetMaterial({
+//     "type": "news",
+//     "offset": 0,
+//     "count": 10
+// }, function(data) {
+//     console.log(data);
+// });
+
+weixin.createQrcode({
+    "expire_seconds": 604800,
+    "action_name": "QR_SCENE",
+    "action_info": {
+        "scene": {
+            "scene_id": 123
+        }
+    }
+}, function(data) {
+    console.log(data);
+});
+
+weixin.createQrcode({
+    "action_name": "QR_LIMIT_SCENE",
+    "action_info": {
+        "scene": {
+            "scene_id": 123
+        }
+    }
+}, function(data) {
+    console.log(data);
+});
+
+weixin.createQrcode({
+    "action_name": "QR_LIMIT_STR_SCENE",
+    "action_info": {
+        "scene": {
+            "scene_str": "123"
+        }
+    }
 }, function(data) {
     console.log(data);
 });
 
 
-
-weixin.getShortUrl({
-    action: "long2short",
-    long_url: "http://www.baidu.com"
-}, function(data) {
-    console.log(data);
-});
+// weixin.getShortUrl({
+//     action: "long2short",
+//     long_url: "http://www.baidu.com"
+// }, function(data) {
+//     console.log(data);
+// });
 
 
 
